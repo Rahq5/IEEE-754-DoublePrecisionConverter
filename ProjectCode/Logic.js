@@ -1,4 +1,12 @@
-// testing case for positive intgers
+/**
+ *   ###### Weclome ######
+ *   this module is the area of 
+ *   core logic processed in this 
+ *          application
+ * @author: Rawi Alqurashi
+ *   
+ */
+
 
 
 
@@ -6,52 +14,70 @@
 function validateInput_StartFunc(num){
     
     if(typeof num == 'string'  ){
-       return msgToUser("invalid input");
+       return "invalid input";
     }else{
        return makeObject(num);
     }
 }
-//function passed!!
 
-//this function make an object and pass it to binarylogic()
+
+
+// our constructor makes an object to collect all data then sent to next phase
 function makeObject(num){
     
     //object = {sign , exponent , mantissa , final_res , numberPassed}
     let object = {
         sign : (num < 0)? "N" : "P",
-        exponent :0,
-        mantissa :0,
-        final_Res:0,
-        number: num
+        exponent_Binary :"",
+        exponent_int: 0,
+        mantissa :"",
+        final_Res:"",
+        number: num, 
+        formula : ""
     }
     return binaryLogic(object);
 }
-//function passed !!
 
 function binaryLogic(obj){
    
+    let ExpoObj = ExponentCounter(obj.number); // to get all data once
+
     let signn = (obj.sign == "N")? "1" : "0";
-    let exponent = ExponentCounter(obj.number).biasBinary; 
+    let exponentBin =ExpoObj.biasBinary;
+    let exponentInt = ExpoObj.biasAdded;
     let mantissa = mantissaExtractor(obj.number);
     
 
+    //### object assigning values section ###
+    obj.sign = (signn == "1")? "Negative" : "Positive";
+    obj.exponent_Binary = exponentBin;
+    obj.exponent_int = exponentInt;
+    obj.mantissa = mantissa;
+   
+
+    // binary presentation
+    obj.final_Res = ""+signn+exponentBin+mantissa;
+    //applying IEEE formula
+    obj.formula = IEEE754_formaula(signn , exponentInt , obj.mantissa);
     
-    console.log(signn + ""+ exponent + "" + mantissa);
+    return obj;
 
 }
 
+function IEEE754_formaula(sign , exp , mantissa){
 
-function msgToUser (word){
+    //converting to intger type with number base 2 (number base 2 means binary)
+    let mantissaFraction = parseInt(mantissa , 2);
+   
+    //Convert the 52-bit integer back to its fractional value between 0 and 1.
+    mantissaFraction = mantissaFraction / 2**52;
+    
+    //applying and returning formula
+    return ((-1)**sign) * (2**(exp -1023)) * (1 + mantissaFraction);
+    // return ((-1)**sign) * (2**(exp -1023)) * (1 + mantissaFraction); 
 
-    if(word == "invalid input"){
-         console.log("fuck you II");
-    }
 
 }
-//console.log(makeObject("hello"));
-
-//console.log(validateInput(22.5));
-//
 
 
 
@@ -120,7 +146,11 @@ function mantissaExtractor(num) {
 
 // now to build up the big logic function , then String builder
 
-validateInput_StartFunc("hello");
+console.log(validateInput_StartFunc(9.75));
+console.log(validateInput_StartFunc(-9.75));
+console.log(validateInput_StartFunc(0.1));
+console.log(validateInput_StartFunc(13.342));
+
 
 // correct output 1234567890
 
