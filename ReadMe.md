@@ -25,9 +25,9 @@ here's a deeper description of how the process will go
 # Scope
 here all what the program cannot handle and may cause a bad response
 - non-numeric inputs
-- exponent notations : 
-	  - 1000 is valid 
-	  - 1e+3 isn't valid
+- exponent notations :
+  - 	1000 is valid
+  - 	1e+3 isn't valid
 - empty inputs :
 	- clicking enter without typing anything
 	- spaces
