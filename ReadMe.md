@@ -64,10 +64,11 @@ the whole project will have two modules will be shown below
 - add section in string message to be the result of extracted binary 64bits using the mantissa formula
 - project maybe inaccurate in subnormal numbers like close-to-zero cases ~0.00001
 
-# Remaining
-- link modules
-- add input on interface 
-- validation
-- revise your code 
-  
- 
+# Remaining 
+-  check "to work on field"
+
+
+# to work on & errors to fix..
+- when 0 is entered  , both of exponent_binary and exponent_bias prints "undefined" value
+- when printing a number and shown result then on second attempt inputs a bad value like "hello" , will print past value result instead of invalid input msg 
+- showing msg of applying formula on "formula" field

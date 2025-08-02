@@ -8,25 +8,32 @@
  */
 
 
+//entry method is exposed to public 
+module.exports={validateInput_StartFunc};
 
 
 //this method validates datatype and calls other methods 
 function validateInput_StartFunc(num){
     
-    if(typeof num == 'string'  ){
-       return "invalid input";
-    }else{
-       return makeObject(num);
-    }
+    // i have to parse to float because of .prompt (always returns string)
+    // so if oassed value is actually a float but in string type then will be succesd
+    //otherwise will return invalid input msg
+    
+     let convertToFloat = parseFloat(num);
+
+     if(isNaN(convertToFloat)){
+        return "Invalid Input";
+     }else{
+        return makeObject(convertToFloat);
+     }
+
 }
-
-
 
 // our constructor makes an object to collect all data then sent to next phase
 function makeObject(num){
     
     //object = {sign , exponent , mantissa , final_res , numberPassed}
-    let object = {
+    var object = {
         sign : (num < 0)? "N" : "P",
         exponent_Binary :"",
         exponent_int: 0,
@@ -35,7 +42,14 @@ function makeObject(num){
         number: num, 
         formula : ""
     }
-    return binaryLogic(object);
+
+    //saving obj after being processed to be exported
+
+    let object_processed =binaryLogic(object);
+
+    module.exports.ReadyObj= object_processed;
+
+    return object_processed;
 }
 
 function binaryLogic(obj){
@@ -79,12 +93,10 @@ function IEEE754_formaula(sign , exp , mantissa){
 
 }
 
-
-
 //this method extracts the exponent from the number given
 // process: number>binary>count exponent> return result
 function ExponentCounter(num){
-    let binary = Math.abs(num.toString(2));
+    let binary = Math.abs(num).toString(2);
     let binnumber = binary;
     // delete the abs  !!!!
     
@@ -136,23 +148,10 @@ function mantissaExtractor(num) {
 
 
 
-
-
-
-
 //###################################################
 // ############## Expermint Field ###################
 //VVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVVV
 
-// now to build up the big logic function , then String builder
-
-console.log(validateInput_StartFunc(9.75));
-console.log(validateInput_StartFunc(-9.75));
-console.log(validateInput_StartFunc(0.1));
-console.log(validateInput_StartFunc(13.342));
-
-
-// correct output 1234567890
 
 
 
