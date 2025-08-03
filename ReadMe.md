@@ -61,7 +61,7 @@ the whole project will have two modules will be shown below
 
 ## System Architecture Diagram
   here I will show the high-level view of the project and simple communications between modules and components.
-  ![system architechture diagram](numberEncoderFlowProcessDiagram.drawio.png)
+  ![system architechture diagram](https://github.com/Rahq5/IEEE-754-DoublePrecisionConverter/blob/f9f4ed5ea7542df40685dbfcbf46485771fdf33e/numberEncoderFlowProcessDiagram.png)
 
 ### Notes and Assumptions
 - .validationInput() function is a validating input point , not just an if-condition
