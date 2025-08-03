@@ -71,4 +71,5 @@ the whole project will have two modules will be shown below
 # to work on & errors to fix..
 - when 0 is entered  , both of exponent_binary and exponent_bias prints "undefined" value
 - when printing a number and shown result then on second attempt inputs a bad value like "hello" , will print past value result instead of invalid input msg 
-- showing msg of applying formula on "formula" field
+- showing msg for invalid inputs for user 
+- 

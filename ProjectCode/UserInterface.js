@@ -7,7 +7,7 @@ const prompt = require('prompt-sync')();
 
 while(true){
    
-    console.log("Enter a number");
+    console.log("Enter a number / type 'exit' to shutdown");
     let UserInput = prompt();
 
     if(UserInput == "exit"){
@@ -27,30 +27,29 @@ function StringBuilder (obj){
     let StringFormula = StringBuilderForFormula(obj);
     let StringBlock = 
     [
-        "____________________________________",
+        "_______________________________________________________",
         "IEEE-754 Double-Precision Converter",
-        "____________________________________",
+        "_______________________________________________________",
         "• Original number:  " + obj.number,
         "• sign           :  " + obj.sign,
         "• exponent-Binary:  " + obj.exponent_Binary,
         "• exponent-bias  :  " + obj.exponent_int,
         "• mantissa-Binary:  " + obj.mantissa,
-        "• Formula        :  " 
+        "• Formula        :  " ,
+        "                          ",
+        "   •Step 1:General form",
+        "    (-1)^sign * (1*mantissa) * 2^(exponent - 1023)",
+        "                          ",
+        "   •Step 2:applying given value",
+        "    (-1)^"+obj.sign+" * (1 * " +obj.mantissa.slice(0,8)+") * 2^("+(obj.exponent_int-1023)+" -1023)",
+        "                          ",
+        "   •Step 3: calculation:",
+        "    = " + obj.formula ,
+        "_______________________________________________________"
+
     ]
 
     for(let x=0;x<StringBlock.length;x++){
         console.log(StringBlock[x]);
     }
 }
-
-function StringBuilderForFormula(obj){
-    //this method is specilsed in writing steps of applying formula
-    //and building string blocks will be in three steps
-    //1- showing applied formula with no values
-    //2- showing applied formula with values
-    //3- showing final result of formula with values
-
-    
-}
-
-
