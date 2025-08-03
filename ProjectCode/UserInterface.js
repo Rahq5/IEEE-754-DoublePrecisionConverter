@@ -1,7 +1,22 @@
 const importedFunction = require('./Logic.js');
 const prompt = require('prompt-sync')();
-//imported file logic.js which contains:
-// - validateInput_StartFunc(num)
+
+/*
+imported file logic.js which contains:
+ - validateInput_StartFunc(num)
+
+ - object with fields:
+ var object = {
+        sign : (num < 0)? "Negative" : "Positive",
+        exponent_Binary :"",
+        exponent_int: 0,
+        mantissa :"",
+        final_Res:"",
+        number: original number, 
+        formula : ""
+    }
+
+*/
 
 
 
@@ -24,7 +39,7 @@ while(true){
 function StringBuilder (obj){
     
   
-    let StringFormula = StringBuilderForFormula(obj);
+    
     let StringBlock = 
     [
         "_______________________________________________________",
@@ -45,6 +60,8 @@ function StringBuilder (obj){
         "                          ",
         "   •Step 3: calculation:",
         "    = " + obj.formula ,
+        "• final Result:" ,
+        "  "+((obj.sign=="Positive")? "0" : "1") + obj.exponent_Binary + obj.mantissa +" ",
         "_______________________________________________________"
 
     ]
