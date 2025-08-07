@@ -1,0 +1,22 @@
+{
+  "name": "project_number_encoder_logic",
+  "version": "1.0.0",
+  "description": "this is a project takes a number from user and convert it to 64bits repreasentaion using the methodolgy of IEEE-754",
+  "main": "Logic.js",
+  "scripts": {
+    "test": "node userInterface.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Rahq5/IEEE-754-DoublePrecisionConverter.git"
+  },
+  "keywords": [
+    "IEEE-754_Numbers_Converter"
+  ],
+  "author": "Rahq_05",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Rahq5/IEEE-754-DoublePrecisionConverter/issues"
+  },
+  "homepage": "https://github.com/Rahq5/IEEE-754-DoublePrecisionConverter#readme"
+}
